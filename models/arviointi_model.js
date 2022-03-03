@@ -1,8 +1,8 @@
 const db = require('../database');
 
 const arviointi = {
-  getByid: function(id, callback) {
-    return db.query('select * from arviointi where id_arviointi=?', [id], callback);
+  getById: function(id_arviointi, callback) {
+    return db.query('select * from arviointi where id_arviointi=?', [id_arviointi], callback);
   },
   getAll: function(callback) {
     return db.query('select * from arviointi', callback);
@@ -14,13 +14,13 @@ const arviointi = {
       callback
     );
   },
-  delete: function(id, callback) {
-    return db.query('delete from arviointi where id_arviointi=?', [id], callback);
+  delete: function(id_arviointi, callback) {
+    return db.query('delete from arviointi where id_arviointi=?', [id_arviointi], callback);
   },
-  update: function(id, arviointi, callback) {
+  update: function(id_arviointi, arviointi, callback) {
     return db.query(
       'update arviointi set paivamaara=?,arvosana=?,id_opiskelija=?,id_opintojakso=? where id_arviointi=?',
-      [arviointi.paivamaara, arviointi.arvosana, arviointi.id_opiskelija, arviointi.id_opintojakso, id],
+      [arviointi.paivamaara, arviointi.arvosana, arviointi.id_opiskelija, arviointi.id_opintojakso, id_arviointi],
       callback
     );
   }
